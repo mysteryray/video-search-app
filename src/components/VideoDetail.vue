@@ -1,0 +1,35 @@
+<template>
+  <div v-if="video" class="col-md-8">
+    <div class="ratio ratio-16x9">
+      <iframe class="" :src="videoUrl" />
+    </div>
+    <div class="details">
+      <h4>{{ video.snippet.title }}</h4>
+      <p>{{ video.snippet.description }}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "VideoDetail",
+  computed: {
+    videoUrl() {
+      const { videoId } = this.video.id;
+      return `https://www.youtube.com/embed/${videoId}`;
+    },
+  },
+  props: {
+    video: Object,
+  },
+};
+</script>
+
+<style scoped>
+.details {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+</style>
